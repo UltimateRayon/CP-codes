@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool validPath(int n, vector<vector<int>>& edges, int source,
+                   int destination) {
+                    vector<vector<int>> graph(n);
+        for (int u = 0; u < edges.size(); u++) {
+            //for (int v : edges[u]) {
+                // cin >> u >> v;
+                graph[edges[u][0]].push_back(edges[u][1]);
+                graph[edges[u][1]].push_back(edges[u][0]);
+            //}
+        }
+        stack<int> s;
+        vector<int> visited(n, 0);
+        s.push(source);
+        visited[source] = 1;
+        while (!s.empty()) {
+            int data = s.top();
+            // cout << data << " ";
+            if (data == destination) {
+                // cout << endl << "Found";
+                return true;
+            }
+            s.pop();
+            for (int neighbour : graph[data]) {
+                if (visited[neighbour] == 0) {
+                    s.push(neighbour);
+                    visited[neighbour] = 1;
+                }
+            }
+        }
+        // cout << endl << "Not Found!";
+        return false;
+    }
+};

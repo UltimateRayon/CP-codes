@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+        int vertices = graph.size();
+
+        vector<int> colors(vertices, -1);
+        for (int start = 0; start < vertices; start++) {
+            if(colors[start]==-1){
+            queue<int> q;
+            q.push(start);
+            colors[start] = 0;
+
+            while (!q.empty()) {
+                int data = q.front();
+                // cout << data << " ";
+                q.pop();
+                for (int neighbour : graph[data]) {
+                    if (colors[neighbour] == -1) {
+                        colors[neighbour] = 1 - colors[data];
+                        q.push(neighbour);
+                    } else if (colors[neighbour] == colors[data]) {
+                        return false;
+            }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+};
