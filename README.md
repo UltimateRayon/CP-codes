@@ -8,7 +8,6 @@ All codes are organized site-wise inside folders for easy navigation and referen
 ## 📁 Folder Structure
 
 CP-codes/  
-│  
 ├── Codeforces/  
 ├── CSES/  
 ├── LeetCode/  
